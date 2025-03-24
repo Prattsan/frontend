@@ -1,11 +1,24 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Head from "next/head";
 import { useState } from "react";
-import { LiveKitRoom, RoomAudioRenderer, StartAudio } from "@livekit/components-react";
+import {
+  LiveKitRoom,
+  RoomAudioRenderer,
+  StartAudio,
+} from "@livekit/components-react";
 import Playground from "@/components/playground/Playground";
 import { useConnection } from "@/hooks/useConnection";
 
-const themeColors = ["cyan", "green", "amber", "blue", "violet", "rose", "pink", "teal"];
+const themeColors = [
+  "cyan",
+  "green",
+  "amber",
+  "blue",
+  "violet",
+  "rose",
+  "pink",
+  "teal",
+];
 
 function ConnectionWrapper() {
   const { wsUrl, token, connect, disconnect } = useConnection();
@@ -30,7 +43,7 @@ function ConnectionWrapper() {
           handleConnect(true);
         }}
       >
-        Get fasdfa Online Assistance!
+        Get Online Assistance!
       </motion.button>
 
       <AnimatePresence>
@@ -73,40 +86,43 @@ function ConnectionWrapper() {
   );
 }
 
-import { motion, Variants } from 'framer-motion';
-
 const backgroundVariants: Variants = {
-  initial: {
-    background: "linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)"
-  },
-  animate: {
+  animate: (i: number) => ({
     background: [
       "linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
       "linear-gradient(45deg, #0093E9 0%, #80D0C7 100%)",
       "linear-gradient(45deg, #8EC5FC 0%, #E0C3FC 100%)",
       "linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
-    ],
+    ][i % 4],
     transition: {
-      duration: 100,
+      duration: 10,
       repeat: Infinity,
       repeatType: "reverse",
     },
-  },
+  }),
 };
 
 export default function Home() {
+  const [gradientIndex, setGradientIndex] = useState(0);
   return (
     <>
       <Head>
         <title>Genaith Agency</title>
-        <meta name="description" content="Knolabs Dental Agency - AI-powered dental assistant" />
+        <meta
+          name="description"
+          content="Knolabs Dental Agency - AI-powered dental assistant"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <motion.main 
+      <motion.main
         className="flex flex-col items-center justify-center min-h-screen text-white overflow-hidden"
+        custom={gradientIndex}
         variants={backgroundVariants}
         animate="animate"
+        onAnimationComplete={() => {
+          setGradientIndex((prev) => prev + 1);
+        }}
       >
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -115,7 +131,10 @@ export default function Home() {
           className="text-center"
         >
           <h1 className="text-5xl font-bold mb-6">Welcome to Genaith Agency</h1>
-          <p className="text-xl mb-12 max-w-2xl mx-auto">Experience the future of dental care with our AI-powered assistant. Get instant answers and personalized advice.</p>
+          <p className="text-xl mb-12 max-w-2xl mx-auto">
+            Experience the future of dental care with our AI-powered assistant.
+            Get instant answers and personalized advice.
+          </p>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
