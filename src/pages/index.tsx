@@ -30,7 +30,7 @@ function ConnectionWrapper() {
           handleConnect(true);
         }}
       >
-        Get Free Online Assistance!
+        Get fasdfa Online Assistance!
       </motion.button>
 
       <AnimatePresence>
@@ -93,7 +93,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Knolabs Dental Agency</title>
+        <title>Genaith Agency</title>
         <meta name="description" content="Knolabs Dental Agency - AI-powered dental assistant" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -109,7 +109,7 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center"
         >
-          <h1 className="text-5xl font-bold mb-6">Welcome to Knolabs Dental Agency</h1>
+          <h1 className="text-5xl font-bold mb-6">Welcome to Genaith Agency</h1>
           <p className="text-xl mb-12 max-w-2xl mx-auto">Experience the future of dental care with our AI-powered assistant. Get instant answers and personalized advice.</p>
         </motion.div>
         <motion.div
