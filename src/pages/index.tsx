@@ -73,7 +73,12 @@ function ConnectionWrapper() {
   );
 }
 
-const backgroundVariants = {
+import { motion, Variants } from 'framer-motion';
+
+const backgroundVariants: Variants = {
+  initial: {
+    background: "linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)"
+  },
   animate: {
     background: [
       "linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
